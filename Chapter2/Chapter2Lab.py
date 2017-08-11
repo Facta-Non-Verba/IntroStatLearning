@@ -49,4 +49,31 @@ ufunc = np.frompyfunc(lambda x, y: np.cos(y)/(1 + x*x), 2, 1)
 f = ufunc.outer(x, y)
 plt.clf()
 plt.contour(x, y, f)
-plt.show()
+#plt.show()
+
+#2.3.3 Indexing Data
+A = np.arange(16).reshape(4,4)
+print(A)
+print(A[2, 3])
+print(A[0:2, 1:3])
+print(A[0:2,])
+print(A[-1,])
+print(A.shape)
+
+#2.3.4 Loading Data
+Auto = pd.read_csv('Auto.csv', delimiter = ',')
+print(list(Auto)) #will return the column headers
+
+#2.3.5 Additional Graphical and Numerical Summaries
+plt.clf()
+plt.plot(Auto["cylinders"], Auto["mpg"], 'o')
+#plt.show()
+
+plt.clf()
+plt.hist(Auto["mpg"])
+#plt.show()
+
+joinedA = Auto.join(Auto, how = "outer", lsuffix = 'left', rsuffix = 'right')
+print(list(joinedA))
+
+print(Auto.describe())
